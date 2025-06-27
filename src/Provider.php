@@ -103,9 +103,9 @@ class Provider
 
     /**
      * @param Repository $repository
-     * @param ServerRequestInterface $request
+     * @param ?ServerRequestInterface $request
      */
-    public function __construct(Repository $repository, ServerRequestInterface $request = null)
+    public function __construct(Repository $repository, ?ServerRequestInterface $request = null)
     {
         $this->repository = $repository;
 
@@ -682,10 +682,10 @@ class Provider
     /**
      * Checks if the metadata prefix is in the available metadata formats list.
      * @param string $metadataPrefix
-     * @param string $identifier , optional argument that specifies the unique identifier of an item
+     * @param ?string $identifier , optional argument that specifies the unique identifier of an item
      * @throws CannotDisseminateFormatException
      */
-    private function checkMetadataPrefix($metadataPrefix, $identifier = null)
+    private function checkMetadataPrefix($metadataPrefix, ?string $identifier = null)
     {
         $availableMetadataFormats = $this->repository->listMetadataFormats($identifier);
 
