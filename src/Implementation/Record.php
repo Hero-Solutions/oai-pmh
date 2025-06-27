@@ -20,6 +20,7 @@
 
 namespace Picturae\OaiPmh\Implementation;
 
+use DOMDocument;
 use Picturae\OaiPmh\Interfaces\Record as RecordInterface;
 use Picturae\OaiPmh\Interfaces\Record\Header;
 
@@ -37,21 +38,21 @@ class Record implements RecordInterface
     private $header;
 
     /**
-     * @var 'DOMDocument
+     * @var DOMDocument
      */
     private $about;
 
     /**
-     * @var \DOMDocument
+     * @var DOMDocument
      */
     private $metadata;
 
     /**
      * @param Header $header
-     * @param \DOMDocument $metadata
-     * @param \DOMDocument $about
+     * @param DOMDocument $metadata
+     * @param ?DOMDocument $about
      */
-    public function __construct(Header $header, \DOMDocument $metadata, \DOMDocument $about = null)
+    public function __construct(Header $header, DOMDocument $metadata, ?DOMDocument $about = null)
     {
         $this->about = $about;
         $this->header = $header;
@@ -69,21 +70,21 @@ class Record implements RecordInterface
     }
 
     /**
-     * @return \DOMDocument|null
+     * @return DOMDocument|null
      * an optional and repeatable container to hold data about the metadata part of the record. The contents of an about
      * container must conform to an XML Schema. Individual implementation communities may create XML Schema that define
      * specific uses for the contents of about containers.
      */
-    public function getAbout()
+    public function getAbout(): ?DOMDocument
     {
         return $this->about;
     }
 
     /**
-     * @return \DOMDocument
+     * @return DOMDocument
      * a single manifestation of the metadata from an item
      */
-    public function getMetadata()
+    public function getMetadata(): DOMDocument
     {
         return $this->metadata;
     }
